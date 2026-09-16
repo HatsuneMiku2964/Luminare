@@ -1,0 +1,15 @@
+# intermediate
+build/
+bin/
+bin-int/
+x64/
+Debug/
+Release/
+
+# Visual Studio cache & config files
+.vs/
+*.vcxproj.user
+*.sln.docstates
+*.sln
+*.SUO
+*.user
