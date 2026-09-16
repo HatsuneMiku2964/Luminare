@@ -1,10 +1,13 @@
-add_executable(Sandbox src/App.cpp)
+file(GLOB_RECURSE SANDBOX_SOURCES CONFIGURE_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
+)
+
+source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/src" PREFIX "" FILES ${SANDBOX_SOURCES})
+
+add_executable(Sandbox ${SANDBOX_SOURCES})
 
 target_link_libraries(Sandbox PRIVATE Luminare)
-
-set_target_properties(Sandbox PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/$<CONFIG>-${CMAKE_SYSTEM_NAME}-x64/Sandbox"
-)
 
 if(MSVC)
     target_compile_options(Sandbox PRIVATE /utf-8)

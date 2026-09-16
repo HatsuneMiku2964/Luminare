@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 3.20)
 project(Luminare VERSION 0.1.0 LANGUAGES CXX)
 
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMakeTargets")
+
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 if(MSVC)
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")

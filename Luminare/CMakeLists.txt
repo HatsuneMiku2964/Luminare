@@ -1,12 +1,11 @@
-﻿file(GLOB_RECURSE ENGINE_SOURCES
+﻿file(GLOB_RECURSE ENGINE_SOURCES CONFIGURE_DEPENDS
 	"${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
 )
-add_library(Luminare STATIC ${ENGINE_SOURCES})
 
-set_target_properties(Luminare PROPERTIES
-    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/$<CONFIG>-${CMAKE_SYSTEM_NAME}-x64/Luminare"
-)
+source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/src" PREFIX "" FILES ${ENGINE_SOURCES})
+
+add_library(Luminare STATIC ${ENGINE_SOURCES})
 
 target_include_directories(Luminare
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src
@@ -20,7 +19,7 @@ endif()
 
 target_compile_definitions(Luminare
 	PUBLIC
-		$<$<CONFIG:Debug>:		LMN_DEBUG>
-		$<$<CONFIG:Release>:	LMN_RELEASE>
-		$<$<CONFIG:Dist>:		LMN_DIST>
+		$<$<CONFIG:Debug>:	LMN_DEBUG>
+		$<$<CONFIG:Release>:LMN_RELEASE>
+		$<$<CONFIG:Dist>:	LMN_DIST>
 )

@@ -2,7 +2,12 @@
 chcp 65001 > nul
 
 echo ========================================
-echo [1/2] Generating CMake Project...
+echo [1/3] Removing build folder...
+echo ========================================
+cmake -E rm -rf build
+
+echo ========================================
+echo [2/3] Generating CMake Project...
 echo ========================================
 cmake -B build
 if %ERRORLEVEL% NEQ 0 (
@@ -14,7 +19,7 @@ if %ERRORLEVEL% NEQ 0 (
 
 echo.
 echo ========================================
-echo [2/2] Building Project (Debug)...
+echo [3/3] Building Project (Debug)...
 echo ========================================
 cmake --build build --config Debug
 if %ERRORLEVEL% NEQ 0 (
